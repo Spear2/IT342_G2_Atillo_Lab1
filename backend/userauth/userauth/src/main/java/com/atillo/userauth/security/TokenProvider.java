@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class TokenProvider {
 
-    private final String SECRET_STRING = "SectMasterTheChopper123$";
+    private final String SECRET_STRING = "9a4f641d668f4e56877960784a0d8426";
 
     // 2. Convert that string into a proper SecretKey object
     private final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(SECRET_STRING.getBytes(StandardCharsets.UTF_8));

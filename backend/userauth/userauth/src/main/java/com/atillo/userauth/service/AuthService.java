@@ -13,9 +13,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthService {
     @Autowired
-    private UserRepository userRepo;
-    private TokenProvider tokenProvider;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepo;
+    private final PasswordEncoder passwordEncoder;
+    private final TokenProvider tokenProvider;
+
+    public AuthService(UserRepository userRepo,
+                       PasswordEncoder passwordEncoder,
+                       TokenProvider tokenProvider) {
+        this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenProvider = tokenProvider;
+    }
 
     public LoginResponseDTO login(LoginRequestDTO dto){
         User user = userRepo.findByEmail(dto.getEmail()).
