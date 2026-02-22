@@ -1,21 +1,36 @@
 package com.example.userauth.ui.screens.landing
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.userauth.R
+import com.example.userauth.ui.screens.login.LoginActivity
+import com.example.userauth.ui.screens.register.RegisterActivity
 
 class LandingActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // 1. Link this Kotlin file to your XML layout
         setContentView(R.layout.activity_landing)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // 2. Find the buttons from your XML using the IDs we gave them
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val btnRegister = findViewById<Button>(R.id.btnRegister)
+
+        // 3. Listen for the "Login" button click
+        btnLogin.setOnClickListener {
+            // Create the "ticket" to go to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 4. Listen for the "Create Account" button click
+        btnRegister.setOnClickListener {
+            // Create the "ticket" to go to RegisterActivity
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
